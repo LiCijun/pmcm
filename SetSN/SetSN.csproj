@@ -50,7 +50,7 @@
     <ErrorReport>prompt</ErrorReport>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="MySql.Data, Version=6.6.5.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
+    <Reference Include="MySql.Data, Version=6.8.3.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
     <Reference Include="OpenNETCF.Desktop.Communication, Version=2.8.1584.19226, Culture=neutral">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\K8000SetParameters\OpenNETCF.Desktop.Communication.dll</HintPath>
