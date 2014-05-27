@@ -56,11 +56,33 @@ namespace SetSN
             sqlcmd.CommandText = "SELECT `ID`, `Name`, `CodeName`, `UpdateTime` FROM `Function` WHERE 1";
             sda = new MySqlDataAdapter(sqlcmd.CommandText, sqlCon);
             sda.Fill(deviceType);
-
             comboBoxFunID.DataSource = deviceType;
             comboBoxFunID.DisplayMember = deviceType.Columns["Name"].ToString();
             comboBoxFunID.ValueMember = deviceType.Columns["id"].ToString();
+           
+
+            sqlcmd.CommandText = "SELECT `ID`, `Name` FROM `Function` ";
+            sda = new MySqlDataAdapter(sqlcmd.CommandText, sqlCon);
+            DataTable dt = new DataTable();
+            sda.Fill(dt);
+            comboBoxFun.DataSource = dt;
+            comboBoxFun.DisplayMember = dt.Columns["Name"].ToString();
+            comboBoxFun.ValueMember = dt.Columns["id"].ToString();
+
+
+            sqlcmd.CommandText = "SELECT `ID`,  `Name` FROM `ProductionProcessItem` WHERE code is not null ";
+            sda = new MySqlDataAdapter(sqlcmd.CommandText, sqlCon);
+            dt = new DataTable();
+            sda.Fill(dt);
+            comboBoxCheckItem.DataSource = dt;
+            comboBoxCheckItem.DisplayMember = dt.Columns["Name"].ToString();
+            comboBoxCheckItem.ValueMember = dt.Columns["id"].ToString();
+
+
+
             sqlCon.Close();
+
+
 
         }
 
@@ -156,6 +178,43 @@ namespace SetSN
                 sqlCon.Open();
                 MySqlCommand sqlcmd = sqlCon.CreateCommand();
                 sqlcmd.CommandText = string.Format("UPDATE DeviceType  SET DeviceSerialID='{1}',`DeviceHardVersionID`='{2}' WHERE id='{0}'", comboBoxDeviceType.SelectedValue.ToString(), comboBoxSerial.SelectedValue.ToString(), comboBoxHardVersion.SelectedValue.ToString());
+                sqlcmd.ExecuteNonQuery();
+                sqlCon.Close();
+                MessageBox.Show("OK");
+            }
+            catch (System.Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+        private void buttonFunCheckItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                MySqlConnection sqlCon = new MySqlConnection(connStr);
+                sqlCon.Open();
+                MySqlCommand sqlcmd = sqlCon.CreateCommand();
+                sqlcmd.CommandText = string.Format("INSERT INTO `FunctionProductionProcessItem`(`ID`, `FunctionID`, `ProductionProcessItemID`) VALUES (UUID(),'{0}','{1}')",comboBoxFun.SelectedValue.ToString(), comboBoxCheckItem.SelectedValue.ToString());               
+
+                sqlcmd.ExecuteNonQuery();
+                sqlCon.Close();
+                MessageBox.Show("OK");
+            }
+            catch (System.Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void buttonAddFunList_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                MySqlConnection sqlCon = new MySqlConnection(connStr);
+                sqlCon.Open();
+                MySqlCommand sqlcmd = sqlCon.CreateCommand();
+                sqlcmd.CommandText = string.Format("INSERT INTO `FunEnum`(`ID`, `FunctionID`, `FunMask`) VALUES (UUID(),'{0}','{1}')", comboBoxFunID.SelectedValue.ToString(), textBoxFunValue.Text);
+
                 sqlcmd.ExecuteNonQuery();
                 sqlCon.Close();
                 MessageBox.Show("OK");
