@@ -8,8 +8,8 @@
     <ProjectGuid>{EB9AC35A-7955-4F66-A3AB-13008B71AC29}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SetSN</RootNamespace>
-    <AssemblyName>SetSN</AssemblyName>
+    <RootNamespace>PMCM</RootNamespace>
+    <AssemblyName>PMCM</AssemblyName>
     <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ApplicationIcon>Icon.ico</ApplicationIcon>

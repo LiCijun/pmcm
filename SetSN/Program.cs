@@ -12,7 +12,7 @@ namespace SetSN
         [STAThread]
         static void Main()
         {
-            if (!AppInstance())
+         //   if (!AppInstance())
             {
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
