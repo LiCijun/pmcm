@@ -46,11 +46,11 @@
             // comboBoxDeviceType
             // 
             this.comboBoxDeviceType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxDeviceType.Font = new System.Drawing.Font("宋体", 24F);
+            this.comboBoxDeviceType.Font = new System.Drawing.Font("微软雅黑", 10F);
             this.comboBoxDeviceType.FormattingEnabled = true;
             this.comboBoxDeviceType.Location = new System.Drawing.Point(35, 54);
             this.comboBoxDeviceType.Name = "comboBoxDeviceType";
-            this.comboBoxDeviceType.Size = new System.Drawing.Size(434, 41);
+            this.comboBoxDeviceType.Size = new System.Drawing.Size(434, 27);
             this.comboBoxDeviceType.TabIndex = 0;
             this.comboBoxDeviceType.SelectedIndexChanged += new System.EventHandler(this.comboBoxDeviceType_SelectedIndexChanged);
             // 
