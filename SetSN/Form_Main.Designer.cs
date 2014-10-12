@@ -41,6 +41,7 @@
             this.buttonFunCheckItem = new System.Windows.Forms.Button();
             this.textBoxFunValue = new System.Windows.Forms.TextBox();
             this.buttonAddFunList = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // comboBoxDeviceType
@@ -57,29 +58,29 @@
             // comboBoxFunID
             // 
             this.comboBoxFunID.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxFunID.Font = new System.Drawing.Font("宋体", 24F);
+            this.comboBoxFunID.Font = new System.Drawing.Font("宋体", 16F);
             this.comboBoxFunID.FormattingEnabled = true;
             this.comboBoxFunID.Location = new System.Drawing.Point(35, 115);
             this.comboBoxFunID.Name = "comboBoxFunID";
-            this.comboBoxFunID.Size = new System.Drawing.Size(295, 41);
+            this.comboBoxFunID.Size = new System.Drawing.Size(295, 29);
             this.comboBoxFunID.TabIndex = 0;
             this.comboBoxFunID.SelectedIndexChanged += new System.EventHandler(this.comboBoxFunID_SelectedIndexChanged);
             // 
             // comboBoxFunMask
             // 
             this.comboBoxFunMask.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxFunMask.Font = new System.Drawing.Font("宋体", 24F);
+            this.comboBoxFunMask.Font = new System.Drawing.Font("宋体", 16F);
             this.comboBoxFunMask.FormattingEnabled = true;
             this.comboBoxFunMask.Location = new System.Drawing.Point(35, 174);
             this.comboBoxFunMask.Name = "comboBoxFunMask";
-            this.comboBoxFunMask.Size = new System.Drawing.Size(210, 41);
+            this.comboBoxFunMask.Size = new System.Drawing.Size(210, 29);
             this.comboBoxFunMask.TabIndex = 0;
             // 
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(35, 233);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(141, 61);
+            this.button1.Size = new System.Drawing.Size(117, 40);
             this.button1.TabIndex = 1;
             this.button1.Text = "增加修改功能";
             this.button1.UseVisualStyleBackColor = true;
@@ -88,11 +89,11 @@
             // comboBoxSerial
             // 
             this.comboBoxSerial.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxSerial.Font = new System.Drawing.Font("宋体", 24F);
+            this.comboBoxSerial.Font = new System.Drawing.Font("宋体", 16F);
             this.comboBoxSerial.FormattingEnabled = true;
             this.comboBoxSerial.Location = new System.Drawing.Point(487, 54);
             this.comboBoxSerial.Name = "comboBoxSerial";
-            this.comboBoxSerial.Size = new System.Drawing.Size(190, 41);
+            this.comboBoxSerial.Size = new System.Drawing.Size(190, 29);
             this.comboBoxSerial.TabIndex = 0;
             // 
             // comboBoxHardVersion
@@ -118,21 +119,21 @@
             // comboBoxFun
             // 
             this.comboBoxFun.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxFun.Font = new System.Drawing.Font("宋体", 24F);
+            this.comboBoxFun.Font = new System.Drawing.Font("宋体", 16F);
             this.comboBoxFun.FormattingEnabled = true;
             this.comboBoxFun.Location = new System.Drawing.Point(35, 441);
             this.comboBoxFun.Name = "comboBoxFun";
-            this.comboBoxFun.Size = new System.Drawing.Size(210, 41);
+            this.comboBoxFun.Size = new System.Drawing.Size(210, 29);
             this.comboBoxFun.TabIndex = 0;
             // 
             // comboBoxCheckItem
             // 
             this.comboBoxCheckItem.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxCheckItem.Font = new System.Drawing.Font("宋体", 24F);
+            this.comboBoxCheckItem.Font = new System.Drawing.Font("宋体", 16F);
             this.comboBoxCheckItem.FormattingEnabled = true;
             this.comboBoxCheckItem.Location = new System.Drawing.Point(279, 441);
             this.comboBoxCheckItem.Name = "comboBoxCheckItem";
-            this.comboBoxCheckItem.Size = new System.Drawing.Size(210, 41);
+            this.comboBoxCheckItem.Size = new System.Drawing.Size(210, 29);
             this.comboBoxCheckItem.TabIndex = 0;
             // 
             // buttonFunCheckItem
@@ -147,7 +148,7 @@
             // 
             // textBoxFunValue
             // 
-            this.textBoxFunValue.Location = new System.Drawing.Point(336, 127);
+            this.textBoxFunValue.Location = new System.Drawing.Point(336, 122);
             this.textBoxFunValue.Name = "textBoxFunValue";
             this.textBoxFunValue.Size = new System.Drawing.Size(100, 21);
             this.textBoxFunValue.TabIndex = 2;
@@ -162,6 +163,16 @@
             this.buttonAddFunList.UseVisualStyleBackColor = true;
             this.buttonAddFunList.Click += new System.EventHandler(this.buttonAddFunList_Click);
             // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(171, 233);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(117, 40);
+            this.button3.TabIndex = 1;
+            this.button3.Text = "删除功能";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
             // Form_Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -172,6 +183,7 @@
             this.Controls.Add(this.buttonFunCheckItem);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.buttonAddFunList);
+            this.Controls.Add(this.button3);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.comboBoxCheckItem);
             this.Controls.Add(this.comboBoxFun);
@@ -207,6 +219,7 @@
         private System.Windows.Forms.Button buttonFunCheckItem;
         private System.Windows.Forms.TextBox textBoxFunValue;
         private System.Windows.Forms.Button buttonAddFunList;
+        private System.Windows.Forms.Button button3;
 
     }
 }

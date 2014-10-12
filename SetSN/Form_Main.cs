@@ -53,7 +53,7 @@ namespace SetSN
 
 
 
-            sqlcmd.CommandText = "SELECT `ID`, `Name`, `CodeName`, `UpdateTime` FROM `Function` WHERE 1";
+            sqlcmd.CommandText = "SELECT `ID`, `Name`, `CodeName`, `UpdateTime` FROM `Function`  order by Name ";
             sda = new MySqlDataAdapter(sqlcmd.CommandText, sqlCon);
             sda.Fill(deviceType);
             comboBoxFunID.DataSource = deviceType;
@@ -61,7 +61,7 @@ namespace SetSN
             comboBoxFunID.ValueMember = deviceType.Columns["id"].ToString();
            
 
-            sqlcmd.CommandText = "SELECT `ID`, `Name` FROM `Function` ";
+            sqlcmd.CommandText = "SELECT `ID`, `Name` FROM `Function` order by Name";
             sda = new MySqlDataAdapter(sqlcmd.CommandText, sqlCon);
             DataTable dt = new DataTable();
             sda.Fill(dt);
@@ -70,7 +70,7 @@ namespace SetSN
             comboBoxFun.ValueMember = dt.Columns["id"].ToString();
 
 
-            sqlcmd.CommandText = "SELECT `ID`,  `Name` FROM `ProductionProcessItem` WHERE code is not null ";
+            sqlcmd.CommandText = "SELECT `ID`,  `Name` FROM `ProductionProcessItem` WHERE code is not null order by name ";
             sda = new MySqlDataAdapter(sqlcmd.CommandText, sqlCon);
             dt = new DataTable();
             sda.Fill(dt);
@@ -142,10 +142,10 @@ namespace SetSN
                 sqlCon.Open();
                 MySqlCommand sqlcmd = sqlCon.CreateCommand();
                 MySqlDataAdapter sda = new MySqlDataAdapter(sqlcmd.CommandText, sqlCon);
- 
 
 
-                sqlcmd.CommandText = "SELECT `ID`, `DeviceSerialName`, `DeviceSerialCode` FROM `DeviceSerial` WHERE 1";
+
+                sqlcmd.CommandText = "SELECT `ID`, `DeviceSerialName`, `DeviceSerialCode` FROM `DeviceSerial` WHERE 1 order by DeviceSerialName ";
                 sda = new MySqlDataAdapter(sqlcmd.CommandText, sqlCon);
                 DataTable FunMask = new DataTable();
                 sda.Fill(FunMask);
@@ -155,7 +155,7 @@ namespace SetSN
 
 
 
-                sqlcmd.CommandText = "SELECT `ID`, `DeviceHardVersionName`, `DeviceHardVersionCode`, `UpdateTime` FROM `DeviceHardVersion` WHERE 1";
+                sqlcmd.CommandText = "SELECT `ID`, `DeviceHardVersionName`, `DeviceHardVersionCode`, `UpdateTime` FROM `DeviceHardVersion` WHERE 1 order by  DeviceHardVersionName";
                 sda = new MySqlDataAdapter(sqlcmd.CommandText, sqlCon);
                 DataTable FunMask2 = new DataTable();
                 sda.Fill(FunMask2);
@@ -215,6 +215,28 @@ namespace SetSN
                 MySqlCommand sqlcmd = sqlCon.CreateCommand();
                 sqlcmd.CommandText = string.Format("INSERT INTO `FunEnum`(`ID`, `FunctionID`, `FunMask`) VALUES (UUID(),'{0}','{1}')", comboBoxFunID.SelectedValue.ToString(), textBoxFunValue.Text);
 
+                sqlcmd.ExecuteNonQuery();
+                sqlCon.Close();
+                MessageBox.Show("OK");
+            }
+            catch (System.Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (MessageBox.Show("确定要删除","", MessageBoxButtons.YesNo, MessageBoxIcon.Asterisk, MessageBoxDefaultButton.Button2)== DialogResult.No)
+                {
+                    return;
+                }
+                MySqlConnection sqlCon = new MySqlConnection(connStr);
+                sqlCon.Open();
+                MySqlCommand sqlcmd = sqlCon.CreateCommand();
+                sqlcmd.CommandText = string.Format("delete from DeviceFunList where DeviceTypeID='{0}' and FunID='{1}';", comboBoxDeviceType.SelectedValue.ToString(), comboBoxFunID.SelectedValue.ToString());
                 sqlcmd.ExecuteNonQuery();
                 sqlCon.Close();
                 MessageBox.Show("OK");
