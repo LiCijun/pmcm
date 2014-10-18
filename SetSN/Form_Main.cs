@@ -59,7 +59,7 @@ namespace SetSN
             comboBoxFunID.DataSource = deviceType;
             comboBoxFunID.DisplayMember = deviceType.Columns["Name"].ToString();
             comboBoxFunID.ValueMember = deviceType.Columns["id"].ToString();
-           
+
 
             sqlcmd.CommandText = "SELECT `ID`, `Name` FROM `Function` order by Name";
             sda = new MySqlDataAdapter(sqlcmd.CommandText, sqlCon);
@@ -162,7 +162,7 @@ namespace SetSN
                 comboBoxHardVersion.DataSource = FunMask2;
                 comboBoxHardVersion.DisplayMember = FunMask2.Columns["DeviceHardVersionName"].ToString();
                 comboBoxHardVersion.ValueMember = FunMask2.Columns["id"].ToString();
-               
+
 
                 sqlCon.Close();
 
@@ -194,7 +194,7 @@ namespace SetSN
                 MySqlConnection sqlCon = new MySqlConnection(connStr);
                 sqlCon.Open();
                 MySqlCommand sqlcmd = sqlCon.CreateCommand();
-                sqlcmd.CommandText = string.Format("INSERT INTO `FunctionProductionProcessItem`(`ID`, `FunctionID`, `ProductionProcessItemID`) VALUES (UUID(),'{0}','{1}')",comboBoxFun.SelectedValue.ToString(), comboBoxCheckItem.SelectedValue.ToString());               
+                sqlcmd.CommandText = string.Format("INSERT INTO `FunctionProductionProcessItem`(`ID`, `FunctionID`, `ProductionProcessItemID`) VALUES (UUID(),'{0}','{1}')", comboBoxFun.SelectedValue.ToString(), comboBoxCheckItem.SelectedValue.ToString());
 
                 sqlcmd.ExecuteNonQuery();
                 sqlCon.Close();
@@ -229,7 +229,7 @@ namespace SetSN
         {
             try
             {
-                if (MessageBox.Show("确定要删除","", MessageBoxButtons.YesNo, MessageBoxIcon.Asterisk, MessageBoxDefaultButton.Button2)== DialogResult.No)
+                if (MessageBox.Show("确定要删除", "", MessageBoxButtons.YesNo, MessageBoxIcon.Asterisk, MessageBoxDefaultButton.Button2) == DialogResult.No)
                 {
                     return;
                 }
@@ -238,6 +238,44 @@ namespace SetSN
                 MySqlCommand sqlcmd = sqlCon.CreateCommand();
                 sqlcmd.CommandText = string.Format("delete from DeviceFunList where DeviceTypeID='{0}' and FunID='{1}';", comboBoxDeviceType.SelectedValue.ToString(), comboBoxFunID.SelectedValue.ToString());
                 sqlcmd.ExecuteNonQuery();
+                sqlCon.Close();
+                MessageBox.Show("OK");
+            }
+            catch (System.Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void buttonCloneDeviceType_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                MySqlConnection sqlCon = new MySqlConnection(connStr);
+                sqlCon.Open();
+                MySqlCommand sqlcmd = sqlCon.CreateCommand();
+                sqlcmd.Transaction = sqlcmd.Connection.BeginTransaction();
+                string devicetypeid = comboBoxDeviceType.SelectedValue.ToString();
+                string id = Guid.NewGuid().ToString();
+                sqlcmd.CommandText = string.Format(" INSERT INTO `DeviceType`(`ID`, `TypeName`, `Detail`, `Enabled`, `DeviceSerialID`, `DeviceHardVersionID`, `HHUCheckAppVersion`, `SecUnitVersion`) select '{1}', concat(TypeName,' 克隆待修改'),Detail,0,'dcf0ace2-3d3f-11e4-89a3-000c29344e67',DeviceHardVersionID,HHUCheckAppVersion,SecUnitVersion from  DeviceType where id='{0}'; ", devicetypeid, id);
+                int x = sqlcmd.ExecuteNonQuery();
+                if (x > 0)
+                {
+                    sqlcmd.CommandText = string.Format("INSERT INTO `DeviceFunList`(`ID`, `DeviceTypeID`, `FunID`, `FunMaskID`) select UUID(),'{0}',FunID,FunMaskID from DeviceFunList where  DeviceTypeID='{1}'", id, devicetypeid);
+                    x = sqlcmd.ExecuteNonQuery();
+                    if (x > 0)
+                    {
+                        sqlcmd.Transaction.Commit();
+                    }
+                    else
+                    {
+                        sqlcmd.Transaction.Rollback();
+                    }
+                }
+                else
+                {
+                    sqlcmd.Transaction.Rollback();
+                }
                 sqlCon.Close();
                 MessageBox.Show("OK");
             }

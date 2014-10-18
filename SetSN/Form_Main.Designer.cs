@@ -42,6 +42,7 @@
             this.textBoxFunValue = new System.Windows.Forms.TextBox();
             this.buttonAddFunList = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
+            this.buttonCloneDeviceType = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // comboBoxDeviceType
@@ -173,6 +174,16 @@
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
+            // buttonCloneDeviceType
+            // 
+            this.buttonCloneDeviceType.Location = new System.Drawing.Point(37, 317);
+            this.buttonCloneDeviceType.Name = "buttonCloneDeviceType";
+            this.buttonCloneDeviceType.Size = new System.Drawing.Size(117, 40);
+            this.buttonCloneDeviceType.TabIndex = 1;
+            this.buttonCloneDeviceType.Text = "克隆型号-后续改系列";
+            this.buttonCloneDeviceType.UseVisualStyleBackColor = true;
+            this.buttonCloneDeviceType.Click += new System.EventHandler(this.buttonCloneDeviceType_Click);
+            // 
             // Form_Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -184,6 +195,7 @@
             this.Controls.Add(this.button2);
             this.Controls.Add(this.buttonAddFunList);
             this.Controls.Add(this.button3);
+            this.Controls.Add(this.buttonCloneDeviceType);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.comboBoxCheckItem);
             this.Controls.Add(this.comboBoxFun);
@@ -220,6 +232,7 @@
         private System.Windows.Forms.TextBox textBoxFunValue;
         private System.Windows.Forms.Button buttonAddFunList;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button buttonCloneDeviceType;
 
     }
 }
