@@ -178,7 +178,7 @@
             // 
             this.buttonCloneDeviceType.Location = new System.Drawing.Point(37, 317);
             this.buttonCloneDeviceType.Name = "buttonCloneDeviceType";
-            this.buttonCloneDeviceType.Size = new System.Drawing.Size(117, 40);
+            this.buttonCloneDeviceType.Size = new System.Drawing.Size(172, 40);
             this.buttonCloneDeviceType.TabIndex = 1;
             this.buttonCloneDeviceType.Text = "克隆型号-后续改系列";
             this.buttonCloneDeviceType.UseVisualStyleBackColor = true;
