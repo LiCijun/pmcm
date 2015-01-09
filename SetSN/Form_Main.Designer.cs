@@ -43,6 +43,9 @@
             this.buttonAddFunList = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.buttonCloneDeviceType = new System.Windows.Forms.Button();
+            this.comboBoxRole = new System.Windows.Forms.ComboBox();
+            this.comboBoxRoleItem = new System.Windows.Forms.ComboBox();
+            this.buttonAuthAdd = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // comboBoxDeviceType
@@ -184,6 +187,36 @@
             this.buttonCloneDeviceType.UseVisualStyleBackColor = true;
             this.buttonCloneDeviceType.Click += new System.EventHandler(this.buttonCloneDeviceType_Click);
             // 
+            // comboBoxRole
+            // 
+            this.comboBoxRole.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxRole.Font = new System.Drawing.Font("宋体", 16F);
+            this.comboBoxRole.FormattingEnabled = true;
+            this.comboBoxRole.Location = new System.Drawing.Point(35, 522);
+            this.comboBoxRole.Name = "comboBoxRole";
+            this.comboBoxRole.Size = new System.Drawing.Size(210, 29);
+            this.comboBoxRole.TabIndex = 0;
+            // 
+            // comboBoxRoleItem
+            // 
+            this.comboBoxRoleItem.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxRoleItem.Font = new System.Drawing.Font("宋体", 16F);
+            this.comboBoxRoleItem.FormattingEnabled = true;
+            this.comboBoxRoleItem.Location = new System.Drawing.Point(279, 522);
+            this.comboBoxRoleItem.Name = "comboBoxRoleItem";
+            this.comboBoxRoleItem.Size = new System.Drawing.Size(210, 29);
+            this.comboBoxRoleItem.TabIndex = 0;
+            // 
+            // buttonAuthAdd
+            // 
+            this.buttonAuthAdd.Location = new System.Drawing.Point(511, 509);
+            this.buttonAuthAdd.Name = "buttonAuthAdd";
+            this.buttonAuthAdd.Size = new System.Drawing.Size(141, 61);
+            this.buttonAuthAdd.TabIndex = 1;
+            this.buttonAuthAdd.Text = "权限添加";
+            this.buttonAuthAdd.UseVisualStyleBackColor = true;
+            this.buttonAuthAdd.Click += new System.EventHandler(this.buttonAuthAdd_Click);
+            // 
             // Form_Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -191,12 +224,15 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(984, 687);
             this.Controls.Add(this.textBoxFunValue);
+            this.Controls.Add(this.buttonAuthAdd);
             this.Controls.Add(this.buttonFunCheckItem);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.buttonAddFunList);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.buttonCloneDeviceType);
             this.Controls.Add(this.button1);
+            this.Controls.Add(this.comboBoxRoleItem);
+            this.Controls.Add(this.comboBoxRole);
             this.Controls.Add(this.comboBoxCheckItem);
             this.Controls.Add(this.comboBoxFun);
             this.Controls.Add(this.comboBoxFunMask);
@@ -233,6 +269,9 @@
         private System.Windows.Forms.Button buttonAddFunList;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button buttonCloneDeviceType;
+        private System.Windows.Forms.ComboBox comboBoxRole;
+        private System.Windows.Forms.ComboBox comboBoxRoleItem;
+        private System.Windows.Forms.Button buttonAuthAdd;
 
     }
 }

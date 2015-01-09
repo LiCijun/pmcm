@@ -79,6 +79,22 @@ namespace SetSN
             comboBoxCheckItem.ValueMember = dt.Columns["id"].ToString();
 
 
+            sqlcmd.CommandText = "SELECT `ID`, `Name` FROM `Role` order by name";
+            sda = new MySqlDataAdapter(sqlcmd.CommandText, sqlCon);
+            DataTable dtrole = new DataTable();
+            sda.Fill(dtrole);
+            comboBoxRole.DataSource = dtrole;
+            comboBoxRole.DisplayMember = dtrole.Columns["Name"].ToString();
+            comboBoxRole.ValueMember = dtrole.Columns["ID"].ToString();
+
+            sqlcmd.CommandText = "SELECT `ID`, `Name` FROM `AuthorityItem` order by name";
+            sda = new MySqlDataAdapter(sqlcmd.CommandText, sqlCon);
+            DataTable dtroleitem = new DataTable();
+            sda.Fill(dtroleitem);
+            comboBoxRoleItem.DataSource = dtroleitem;
+            comboBoxRoleItem.DisplayMember = dtroleitem.Columns["Name"].ToString();
+            comboBoxRoleItem.ValueMember = dtroleitem.Columns["id"].ToString();
+
 
             sqlCon.Close();
 
@@ -162,6 +178,8 @@ namespace SetSN
                 comboBoxHardVersion.DataSource = FunMask2;
                 comboBoxHardVersion.DisplayMember = FunMask2.Columns["DeviceHardVersionName"].ToString();
                 comboBoxHardVersion.ValueMember = FunMask2.Columns["id"].ToString();
+
+
 
 
                 sqlCon.Close();
@@ -276,6 +294,25 @@ namespace SetSN
                 {
                     sqlcmd.Transaction.Rollback();
                 }
+                sqlCon.Close();
+                MessageBox.Show("OK");
+            }
+            catch (System.Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void buttonAuthAdd_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                MySqlConnection sqlCon = new MySqlConnection(connStr);
+                sqlCon.Open();
+                MySqlCommand sqlcmd = sqlCon.CreateCommand();
+                sqlcmd.CommandText = string.Format("INSERT INTO `RoleAuthorityList`(`ID`, `RoleID`, `AuthorityItemID`) VALUES (UUID(),'{0}','{1}')", comboBoxRole.SelectedValue.ToString(), comboBoxRoleItem.SelectedValue.ToString());
+
+                sqlcmd.ExecuteNonQuery();
                 sqlCon.Close();
                 MessageBox.Show("OK");
             }
