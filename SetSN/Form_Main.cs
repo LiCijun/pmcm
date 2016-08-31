@@ -43,7 +43,7 @@ namespace SetSN
             sqlCon.Open();
             MySqlCommand sqlcmd = sqlCon.CreateCommand();
 
-            sqlcmd.CommandText = "SELECT `ID`, `TypeName`, `Enabled`, `DeviceSerialID`, `DeviceHardVersionID`, `UpdateTime` FROM `DeviceType` order by TypeName";
+            sqlcmd.CommandText = "SELECT `ID`, `TypeName`, `Enabled`, `DeviceSerialID`, `DeviceHardVersionID`, `UpdateTime` FROM `DeviceType` where SYSEnabled=2 order by TypeName";
             MySqlDataAdapter sda = new MySqlDataAdapter(sqlcmd.CommandText, sqlCon);
             sda.Fill(boxType);
 
