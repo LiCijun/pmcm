@@ -322,6 +322,31 @@ namespace SetSN
             }
         }
 
-    }
+        private void buttonGetAllType_Click(object sender, EventArgs e)
+        {
+            MySqlConnection sqlCon = new MySqlConnection(connStr);
+            try
+            {
+                sqlCon.Open();
+                MySqlCommand sqlcmd = sqlCon.CreateCommand();
 
+                sqlcmd.CommandText = "SELECT `ID`, `TypeName`, `Enabled`, `DeviceSerialID`, `DeviceHardVersionID`, `UpdateTime` FROM `DeviceType` order by TypeName";
+                MySqlDataAdapter sda = new MySqlDataAdapter(sqlcmd.CommandText, sqlCon);
+                sda.Fill(boxType);
+                comboBoxDeviceType.DataSource = boxType;
+                comboBoxDeviceType.DisplayMember = boxType.Columns["TypeName"].ToString();
+                comboBoxDeviceType.ValueMember = boxType.Columns["ID"].ToString();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                sqlCon.Clone();
+                sqlCon.Dispose();
+            }
+
+        }
+    }
 }

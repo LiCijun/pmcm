@@ -49,6 +49,7 @@
             this.buttonAuthAdd = new System.Windows.Forms.Button();
             this.comboBoxRoleItem = new System.Windows.Forms.ComboBox();
             this.comboBoxRole = new System.Windows.Forms.ComboBox();
+            this.buttonGetAllType = new System.Windows.Forms.Button();
             this.tabControlHHU.SuspendLayout();
             this.tabPageHHUType.SuspendLayout();
             this.tabPageAuth.SuspendLayout();
@@ -211,6 +212,7 @@
             this.tabPageHHUType.Controls.Add(this.comboBoxDeviceType);
             this.tabPageHHUType.Controls.Add(this.textBoxFunValue);
             this.tabPageHHUType.Controls.Add(this.buttonFunCheckItem);
+            this.tabPageHHUType.Controls.Add(this.buttonGetAllType);
             this.tabPageHHUType.Controls.Add(this.buttonAddFunList);
             this.tabPageHHUType.Controls.Add(this.button2);
             this.tabPageHHUType.Controls.Add(this.comboBoxCheckItem);
@@ -271,6 +273,16 @@
             this.comboBoxRole.Size = new System.Drawing.Size(210, 29);
             this.comboBoxRole.TabIndex = 2;
             // 
+            // buttonGetAllType
+            // 
+            this.buttonGetAllType.Location = new System.Drawing.Point(789, 67);
+            this.buttonGetAllType.Name = "buttonGetAllType";
+            this.buttonGetAllType.Size = new System.Drawing.Size(110, 44);
+            this.buttonGetAllType.TabIndex = 1;
+            this.buttonGetAllType.Text = "显示所有型号";
+            this.buttonGetAllType.UseVisualStyleBackColor = true;
+            this.buttonGetAllType.Click += new System.EventHandler(this.buttonGetAllType_Click);
+            // 
             // Form_Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -316,6 +328,7 @@
         private System.Windows.Forms.Button buttonAuthAdd;
         private System.Windows.Forms.ComboBox comboBoxRoleItem;
         private System.Windows.Forms.ComboBox comboBoxRole;
+        private System.Windows.Forms.Button buttonGetAllType;
 
     }
 }
