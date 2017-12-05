@@ -53,7 +53,7 @@ namespace SetSN
 
 
 
-            sqlcmd.CommandText = "SELECT `ID`, `Name`, `CodeName`, `UpdateTime` FROM `Function`  order by Name ";
+            sqlcmd.CommandText = "SELECT `ID`, `Name`, `CodeName`, `UpdateTime` FROM `Function` where  `Enabled` = true  order by Name ";
             sda = new MySqlDataAdapter(sqlcmd.CommandText, sqlCon);
             sda.Fill(deviceType);
             comboBoxFunID.DataSource = deviceType;
@@ -61,7 +61,7 @@ namespace SetSN
             comboBoxFunID.ValueMember = deviceType.Columns["id"].ToString();
 
 
-            sqlcmd.CommandText = "SELECT `ID`, `Name` FROM `Function` order by Name";
+            sqlcmd.CommandText = "SELECT `ID`, `Name` FROM `Function` where  `Enabled` = true order by Name";
             sda = new MySqlDataAdapter(sqlcmd.CommandText, sqlCon);
             DataTable dt = new DataTable();
             sda.Fill(dt);
@@ -94,7 +94,6 @@ namespace SetSN
             comboBoxRoleItem.DataSource = dtroleitem;
             comboBoxRoleItem.DisplayMember = dtroleitem.Columns["Name"].ToString();
             comboBoxRoleItem.ValueMember = dtroleitem.Columns["id"].ToString();
-
 
             sqlCon.Close();
 
@@ -161,7 +160,7 @@ namespace SetSN
 
 
 
-                sqlcmd.CommandText = "SELECT `ID`, `DeviceSerialName`, `DeviceSerialCode` FROM `DeviceSerial` WHERE 1 order by DeviceSerialName ";
+                sqlcmd.CommandText = "SELECT `ID`, `DeviceSerialName`, `DeviceSerialCode` FROM `DeviceSerial` WHERE  `Enabled`=true order by DeviceSerialName ";
                 sda = new MySqlDataAdapter(sqlcmd.CommandText, sqlCon);
                 DataTable FunMask = new DataTable();
                 sda.Fill(FunMask);
