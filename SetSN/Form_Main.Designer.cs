@@ -45,11 +45,11 @@
             this.buttonCloneDeviceType = new System.Windows.Forms.Button();
             this.tabControlHHU = new System.Windows.Forms.TabControl();
             this.tabPageHHUType = new System.Windows.Forms.TabPage();
+            this.buttonGetAllType = new System.Windows.Forms.Button();
             this.tabPageAuth = new System.Windows.Forms.TabPage();
             this.buttonAuthAdd = new System.Windows.Forms.Button();
             this.comboBoxRoleItem = new System.Windows.Forms.ComboBox();
             this.comboBoxRole = new System.Windows.Forms.ComboBox();
-            this.buttonGetAllType = new System.Windows.Forms.Button();
             this.tabControlHHU.SuspendLayout();
             this.tabPageHHUType.SuspendLayout();
             this.tabPageAuth.SuspendLayout();
@@ -231,6 +231,16 @@
             this.tabPageHHUType.TabIndex = 0;
             this.tabPageHHUType.Text = "型号相关";
             // 
+            // buttonGetAllType
+            // 
+            this.buttonGetAllType.Location = new System.Drawing.Point(789, 67);
+            this.buttonGetAllType.Name = "buttonGetAllType";
+            this.buttonGetAllType.Size = new System.Drawing.Size(110, 44);
+            this.buttonGetAllType.TabIndex = 1;
+            this.buttonGetAllType.Text = "显示所有型号";
+            this.buttonGetAllType.UseVisualStyleBackColor = true;
+            this.buttonGetAllType.Click += new System.EventHandler(this.buttonGetAllType_Click);
+            // 
             // tabPageAuth
             // 
             this.tabPageAuth.Controls.Add(this.buttonAuthAdd);
@@ -252,6 +262,7 @@
             this.buttonAuthAdd.TabIndex = 4;
             this.buttonAuthAdd.Text = "权限添加";
             this.buttonAuthAdd.UseVisualStyleBackColor = true;
+            this.buttonAuthAdd.Click += new System.EventHandler(this.buttonAuthAdd_Click);
             // 
             // comboBoxRoleItem
             // 
@@ -272,16 +283,6 @@
             this.comboBoxRole.Name = "comboBoxRole";
             this.comboBoxRole.Size = new System.Drawing.Size(210, 29);
             this.comboBoxRole.TabIndex = 2;
-            // 
-            // buttonGetAllType
-            // 
-            this.buttonGetAllType.Location = new System.Drawing.Point(789, 67);
-            this.buttonGetAllType.Name = "buttonGetAllType";
-            this.buttonGetAllType.Size = new System.Drawing.Size(110, 44);
-            this.buttonGetAllType.TabIndex = 1;
-            this.buttonGetAllType.Text = "显示所有型号";
-            this.buttonGetAllType.UseVisualStyleBackColor = true;
-            this.buttonGetAllType.Click += new System.EventHandler(this.buttonGetAllType_Click);
             // 
             // Form_Main
             // 
