@@ -87,7 +87,7 @@ namespace SetSN
             comboBoxRole.DisplayMember = dtrole.Columns["Name"].ToString();
             comboBoxRole.ValueMember = dtrole.Columns["ID"].ToString();
 
-            sqlcmd.CommandText = "SELECT `ID`, `Name` FROM `AuthorityItem` order by name";
+            sqlcmd.CommandText = "SELECT `ID`, `Name` FROM `AuthorityItem` where enabled=true order by name";
             sda = new MySqlDataAdapter(sqlcmd.CommandText, sqlCon);
             DataTable dtroleitem = new DataTable();
             sda.Fill(dtroleitem);
@@ -96,8 +96,6 @@ namespace SetSN
             comboBoxRoleItem.ValueMember = dtroleitem.Columns["id"].ToString();
 
             sqlCon.Close();
-
-
 
         }
 
@@ -348,6 +346,37 @@ namespace SetSN
 
         }
 
-       
+        private void buttonAuthDel_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                MySqlConnection sqlCon = new MySqlConnection(connStr);
+                sqlCon.Open();
+                MySqlCommand sqlcmd = sqlCon.CreateCommand();
+                sqlcmd.CommandText = string.Format("DELETE FROM `RoleAuthorityList` WHERE `RoleID`='{0}' and `AuthorityItemID`='{1}';", comboBoxRole.SelectedValue.ToString(), comboBoxRoleItem.SelectedValue.ToString());
+                int count = sqlcmd.ExecuteNonQuery();
+                sqlCon.Close();
+                if (count == 1)
+                {
+                    MessageBox.Show("OK");
+                }
+                else if (count == 0)
+                {
+                    MessageBox.Show("不需要删除此项");
+                }
+                else
+                {
+                    throw new NotSupportedException();
+                }
+
+
+            }
+            catch (System.Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+
     }
 }

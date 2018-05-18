@@ -50,6 +50,7 @@
             this.buttonAuthAdd = new System.Windows.Forms.Button();
             this.comboBoxRoleItem = new System.Windows.Forms.ComboBox();
             this.comboBoxRole = new System.Windows.Forms.ComboBox();
+            this.buttonAuthDel = new System.Windows.Forms.Button();
             this.tabControlHHU.SuspendLayout();
             this.tabPageHHUType.SuspendLayout();
             this.tabPageAuth.SuspendLayout();
@@ -243,6 +244,7 @@
             // 
             // tabPageAuth
             // 
+            this.tabPageAuth.Controls.Add(this.buttonAuthDel);
             this.tabPageAuth.Controls.Add(this.buttonAuthAdd);
             this.tabPageAuth.Controls.Add(this.comboBoxRoleItem);
             this.tabPageAuth.Controls.Add(this.comboBoxRole);
@@ -283,6 +285,16 @@
             this.comboBoxRole.Name = "comboBoxRole";
             this.comboBoxRole.Size = new System.Drawing.Size(210, 29);
             this.comboBoxRole.TabIndex = 2;
+            // 
+            // buttonAuthDel
+            // 
+            this.buttonAuthDel.Location = new System.Drawing.Point(656, 6);
+            this.buttonAuthDel.Name = "buttonAuthDel";
+            this.buttonAuthDel.Size = new System.Drawing.Size(141, 61);
+            this.buttonAuthDel.TabIndex = 4;
+            this.buttonAuthDel.Text = "权限删除";
+            this.buttonAuthDel.UseVisualStyleBackColor = true;
+            this.buttonAuthDel.Click += new System.EventHandler(this.buttonAuthDel_Click);
             // 
             // Form_Main
             // 
@@ -330,6 +342,7 @@
         private System.Windows.Forms.ComboBox comboBoxRoleItem;
         private System.Windows.Forms.ComboBox comboBoxRole;
         private System.Windows.Forms.Button buttonGetAllType;
+        private System.Windows.Forms.Button buttonAuthDel;
 
     }
 }
