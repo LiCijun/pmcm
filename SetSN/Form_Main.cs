@@ -22,7 +22,7 @@ namespace SetSN
         static string Infile = CurrPath + @"\in.sys";
         static string Runfile = CurrPath + @"\Update.exe";
 
-        static string connStr = String.Format("server={0};uid={1};pwd={2};database={3}", "10.0.1.167", "PMCM", "zL6NVHnw2y3FrPcD", "PMC");
+        static string connStr = String.Format("server={0};uid={1};pwd={2};database={3}", "10.0.0.123", "PMCM", "zL6NVHnw2y3FrPcD", "PMC");
         DataTable deviceItem = new DataTable();
         DataTable deviceType = new DataTable();
         DataTable function = new DataTable();
